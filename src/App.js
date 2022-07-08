@@ -75,7 +75,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Component />} />
       <Route path="Home" element={<ComponentUser />} />
-      <Route path="cart/:id" element={<ComponentCart />} />
+      <Route path="cart" element={<ComponentCart />} />
       <Route path="profile" element={<ComponentProfile />} />
       <Route path="detail/:id" element={<ComponentDetail />} />
       <Route path="customer" element={<ComponentCustomer />} />

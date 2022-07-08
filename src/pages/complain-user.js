@@ -11,7 +11,8 @@ import Chat from '../components/text'
 let socket
 
 function ComponentComplain() {
-
+    const title = 'Complain';
+    document.title = 'Waysbeens | ' + title;
     const [contact, setContact] = useState(null)
     const [contacts, setContacts] = useState([])
     const [messages, setMessages] = useState([])

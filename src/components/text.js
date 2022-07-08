@@ -52,7 +52,7 @@ export default function Chat({ contact, user, messages, sendMessage }) {
                                         textAlign: 'right'
                                         // background: 'var(--right-msg-bg)'
                                     }}>{item.message}</div>
-                                <div>{user.id}</div>
+
                                 {/* </div> */}
 
 

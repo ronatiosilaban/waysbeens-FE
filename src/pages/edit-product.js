@@ -8,6 +8,8 @@ import { useQuery, useMutation } from 'react-query';
 import { API } from '../config/api'
 
 function ComponentEditProduct() {
+    const title = 'Edit Product';
+    document.title = 'Waysbeens | ' + title;
     let navigate = useNavigate();
 
     const { id } = useParams();

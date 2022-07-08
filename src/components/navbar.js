@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Card from '../asssets/Ways.svg';
+import Card from '../asssets/ion.png';
 import be from '../asssets/Be.svg';
 import ve from '../asssets/Vectors (1).svg';
 import ns from '../asssets/ns.svg';
@@ -45,58 +45,22 @@ function NavScrollExample() {
         }}>
             <Container fluid
             >
+
+
                 <img
                     src={Card}
                     style={{
-                        width: '4.5%',
-                        height: '48px',
+                        width: '8.5%',
+                        height: '45px',
                         objectFit: 'cover',
                         position: 'absolute',
-                        marginTop: 10,
+                        marginTop: 5,
                         marginLeft: 300
 
                     }}
                     alt=""
                 />
-                <img
-                    src={be}
-                    style={{
-                        width: '2.5%',
-                        height: '45px',
-                        objectFit: 'cover',
-                        position: 'absolute',
-                        marginTop: 10,
-                        marginLeft: 375
 
-                    }}
-                    alt=""
-                />
-                <img
-                    src={ve}
-                    style={{
-                        width: '1.3%',
-                        height: '23px',
-                        objectFit: 'cover',
-                        position: 'absolute',
-                        marginTop: 23,
-                        marginLeft: 420
-
-                    }}
-                    alt=""
-                />
-                <img
-                    src={ns}
-                    style={{
-                        width: '1.4%',
-                        height: '15px',
-                        objectFit: 'cover',
-                        position: 'absolute',
-                        marginTop: 15,
-                        marginLeft: 445
-
-                    }}
-                    alt=""
-                />
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
                     <Nav

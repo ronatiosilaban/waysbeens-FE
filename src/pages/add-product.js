@@ -8,6 +8,8 @@ import { useMutation } from 'react-query';
 import { API } from '../config/api';
 
 function ComponentProduct() {
+    const title = 'Add Product';
+    document.title = 'Waysbeens | ' + title;
     let navigate = useNavigate();
     const [preview, setPreview] = useState(null);
 

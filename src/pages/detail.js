@@ -8,11 +8,13 @@ import convertRupiah from 'rupiah-format';
 import { API } from '../config/api';
 
 function ComponentDetail() {
+    const title = 'Detail Product';
+    document.title = 'Waysbeens | ' + title;
     let navigate = useNavigate();
     let { id } = useParams();
 
     const [form, setForm] = useState();
-    let { data: product, refetch } = useQuery('productCache', async () => {
+    let { data: product } = useQuery('productCache', async () => {
         const config = {
             method: "GET",
             headers: {
@@ -24,6 +26,23 @@ function ComponentDetail() {
         return response.data.data;
     });
 
+    let { data: Count, refetch } = useQuery('cartChace', async () => {
+        const config = {
+            method: "GET",
+            headers: {
+                Authorization: 'Basic ' + localStorage.token,
+            },
+        };
+
+        const response = await API.get('/carts');
+        return response.data.data;;
+    });
+
+    useEffect(() => {
+        if (Count !== undefined) {
+            localStorage.setItem('cartAmount', Count.amount)
+        }
+    }, [Count])
     // const handleChange = (e) => {
     //     setForm({
     //         ...form,
@@ -37,7 +56,7 @@ function ComponentDetail() {
 
             const data = {
                 idProduct: product.id,
-                idUser: product.user.id,
+                // idUser: product.user.id,
                 // amount: localStorage.productCount
             };
             console.log(data);
@@ -56,8 +75,9 @@ function ComponentDetail() {
 
             // await API.post('/transaction', body, config);
             const response = await API.post('/cart', body, config);
+            refetch()
             console.log('data', response.data.data);
-            navigate(`/cart/${response.data.data.id}`)
+            // navigate(`/cart/${response.data.data.id}`)
 
 
             // navigate('/profile');

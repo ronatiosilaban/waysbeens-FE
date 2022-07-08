@@ -5,12 +5,13 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import background from '../asssets/ffff.svg'
 import backgrounds from '../asssets/cappp.svg'
-import title from '../asssets/Title.svg'
+import titles from '../asssets/Title.svg'
 import { API } from '../config/api'
 import { useQuery, useMutation } from 'react-query';
 import convertRupiah from 'rupiah-format';
 function Component() {
-
+    const title = 'Home';
+    document.title = 'Waysbeens | ' + title;
     let { data: products } = useQuery('productsCache', async () => {
         const response = await API.get('/products');
         return response.data.data;
@@ -18,7 +19,7 @@ function Component() {
     });
 
     return (
-        <div style={{ backgroundColor: '#E5E5E5', height: '150vh' }}>
+        <div style={{ backgroundColor: '#E5E5E5', height: '100%' }}>
             <NavScrollExample />
             <Container>
                 <Row>
@@ -52,9 +53,9 @@ function Component() {
                                 alt=""
                             />
                             <img
-                                src={title}
+                                src={titles}
                                 style={{
-                                    width: '30%',
+                                    width: '33%',
                                     height: '300px',
                                     objectFit: 'cover',
                                     alignItems: 'flex-end',
@@ -76,7 +77,7 @@ function Component() {
                                         products?.map((item, index) => (
                                             <Col sm="3" item={item} key={index}>
                                                 {/* <Link to={`/detail/` + item.id} style={{ textDecoration: "none" }}> */}
-                                                <Card style={{ width: '18rem' }}>
+                                                <Card style={{ width: '18rem', marginBottom: 40 }}>
                                                     <Card.Img variant="top" src={item.image} alt={item.name} />
                                                     <Card.Body style={{ backgroundColor: '#F6E6DA', lineHeight: 1 }}>
                                                         <Card.Title >{item.name}</Card.Title>

@@ -6,13 +6,31 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import logo from '../asssets/shop.svg'
 import { Link } from 'react-router-dom';
-import Card from '../asssets/Ways.svg';
+import Card from '../asssets/ion.png';
 import be from '../asssets/Be.svg';
 import ve from '../asssets/Vectors (1).svg';
 import ns from '../asssets/ns.svg';
 import basket from '../asssets/basket.svg';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-function NavUser() {
+import { useQuery, useMutation } from 'react-query';
+import { API } from '../config/api';
+
+
+function NavUser(countData) {
+
+    // let { data: Count, refetch } = useQuery('productCache', async () => {
+    //     const config = {
+    //         method: "GET",
+    //         headers: {
+    //             Authorization: 'Basic ' + localStorage.token,
+    //         },
+    //     };
+
+    //     const response = await API.get('/carts');
+    //     return response.data.data;;
+    // });
+    const Count = localStorage.cartAmount
+
     return (
         <Navbar bg="light" expand="lg" style={{
             height: 80,
@@ -32,55 +50,17 @@ function NavUser() {
                     <img
                         src={Card}
                         style={{
-                            width: '4.5%',
-                            height: '48px',
+                            width: '8.5%',
+                            height: '45px',
                             objectFit: 'cover',
                             position: 'absolute',
-                            marginTop: 10,
+                            marginTop: 5,
                             marginLeft: 300
 
                         }}
                         alt=""
                     />
-                    <img
-                        src={be}
-                        style={{
-                            width: '2.5%',
-                            height: '45px',
-                            objectFit: 'cover',
-                            position: 'absolute',
-                            marginTop: 10,
-                            marginLeft: 375
 
-                        }}
-                        alt=""
-                    />
-                    <img
-                        src={ve}
-                        style={{
-                            width: '1.3%',
-                            height: '23px',
-                            objectFit: 'cover',
-                            position: 'absolute',
-                            marginTop: 23,
-                            marginLeft: 420
-
-                        }}
-                        alt=""
-                    />
-                    <img
-                        src={ns}
-                        style={{
-                            width: '1.4%',
-                            height: '15px',
-                            objectFit: 'cover',
-                            position: 'absolute',
-                            marginTop: 23,
-                            marginLeft: 445
-
-                        }}
-                        alt=""
-                    />
                 </Link>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
@@ -91,13 +71,39 @@ function NavUser() {
                     >
                     </Nav>
                     <Form className="d-flex">
-                        <Link to="/cart/:id">
-                            <img src={basket} alt="" style={{ width: 25, marginRight: 10, marginTop: 10 }} />
+                        <Link to="/cart">
+                            <div>
+                                <img src={basket} alt="" style={{ width: 25, marginRight: 10, marginTop: 5, position: 'absolute', }} />
+                                {Count > 0 &&
+                                    (
+                                        <div style={{
+                                            width: "15px",
+                                            height: "15px",
+                                            marginLeft: "15px",
+                                            marginTop: "10px",
+                                            backgroundColor: 'red',
+                                            borderRadius: 25,
+                                            // marginLeft: 8,
+                                        }}>
+                                            <p style={{
+                                                color: 'white',
+                                                fontSize: 12,
+                                                textAlign: 'center'
+                                            }}>{Count}</p>
+                                        </div>
+                                    )
+                                }
+
+
+                            </div>
                         </Link>
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG9ydHJhaXR8ZW58MHx8MHx8&w=1000&q=80" alt="user avatar" class="rounded-circle" style={{ width: 40, height: 40, marginLeft: 20 }} />
+                        <label for="nav-dropdown-dark-example">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cG9ydHJhaXR8ZW58MHx8MHx8&w=1000&q=80" alt="user avatar" class="rounded-circle" style={{ width: 40, height: 40, marginLeft: 40, marginRight: 0 }} />
+                        </label>
                         <NavDropdown
                             id="nav-dropdown-dark-example"
                             menuVariant="dark"
+
                             style={{ marginRight: 290 }}
                         >
                             <Link to="/profile">

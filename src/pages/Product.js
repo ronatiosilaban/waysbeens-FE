@@ -9,6 +9,8 @@ import { API } from '../config/api';
 
 
 function ComponentList() {
+    const title = 'Product';
+    document.title = 'Waysbeens | ' + title;
     const [idDelete, setIdDelete] = useState(null);
     const [confirmDelete, setConfirmDelete] = useState(null)
     const [show, setShow] = useState(false);

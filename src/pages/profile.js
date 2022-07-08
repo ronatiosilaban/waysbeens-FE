@@ -1,10 +1,7 @@
 import NavUser from '../components/navbaruser';
 import { Container, Row, Col, Button, } from 'react-bootstrap';
 import barcode from '../asssets/barcode.svg'
-import Card from '../asssets/Ways.svg';
-import be from '../asssets/Be.svg';
-import ve from '../asssets/Vectors (1).svg';
-import ns from '../asssets/ns.svg';
+import Card from '../asssets/ion.png';
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../context/user';
 import { useQuery, useMutation } from 'react-query';
@@ -14,7 +11,8 @@ import dateFormat from 'dateformat';
 import { API } from '../config/api';
 
 function ComponentProfile() {
-
+    const title = 'Profile';
+    document.title = 'Waysbeens | ' + title;
     const [link, setLink] = useState('')
 
     const [state] = useContext(UserContext);
@@ -95,7 +93,7 @@ function ComponentProfile() {
                                                     <Row><p style={{ lineHeight: 0, fontSize: 20, marginTop: 10, fontWeight: 500 }}>{item.product.name}</p></Row>
                                                     <Row><span style={{ lineHeight: 0, fontSize: 10, marginTop: 5 }}>{dateFormat(item.product.createdAt, 'dddd, d mmmm yyyy')}</span></Row>
                                                     <Row><span style={{ lineHeight: 0, fontSize: 10, marginTop: 30 }}>Price : {convertRupiah.convert(item.product.price)}</span></Row>
-                                                    <Row><span style={{ lineHeight: 0, fontSize: 10, marginTop: 30 }}>Qty : {item.product.qty}</span></Row>
+                                                    <Row><span style={{ lineHeight: 0, fontSize: 10, marginTop: 30 }}>Qty : {item.qty}</span></Row>
                                                     <Row><span style={{ lineHeight: 0, fontSize: 10, marginTop: 30, fontWeight: 600 }}>Sub-Total : {convertRupiah.convert(item.amount)}</span></Row>
                                                 </Col>
                                                 <Col sm={3} style={{ justifyContent: 'right', alignItems: 'flex-end' }}>
@@ -103,7 +101,7 @@ function ComponentProfile() {
                                                         <img
                                                             src={Card}
                                                             style={{
-                                                                width: '4%',
+                                                                width: '7%',
                                                                 height: '30px',
                                                                 objectFit: 'cover',
                                                                 position: 'absolute',
@@ -113,45 +111,7 @@ function ComponentProfile() {
                                                             }}
                                                             alt=""
                                                         />
-                                                        <img
-                                                            src={be}
-                                                            style={{
-                                                                width: '2%',
-                                                                height: '20px',
-                                                                objectFit: 'cover',
-                                                                position: 'absolute',
-                                                                marginTop: 15,
-                                                                marginLeft: 55
 
-                                                            }}
-                                                            alt=""
-                                                        />
-                                                        <img
-                                                            src={ve}
-                                                            style={{
-                                                                width: '2%',
-                                                                height: '12px',
-                                                                objectFit: 'cover',
-                                                                position: 'absolute',
-                                                                marginTop: 23,
-                                                                marginLeft: 70
-
-                                                            }}
-                                                            alt=""
-                                                        />
-                                                        <img
-                                                            src={ns}
-                                                            style={{
-                                                                width: '2%',
-                                                                height: '5px',
-                                                                objectFit: 'cover',
-                                                                position: 'absolute',
-                                                                marginTop: 27,
-                                                                marginLeft: 82
-
-                                                            }}
-                                                            alt=""
-                                                        />
                                                     </Row>
                                                     <Row sm={3}>
 
